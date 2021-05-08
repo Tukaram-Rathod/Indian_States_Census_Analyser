@@ -10,8 +10,7 @@ import java.nio.file.Paths;
 import java.util.Iterator;
 
 public class CensusAnalyser {
-    private static final String INDIA_CENSUS_CSV_FILE_PATH = "C:\\Users\\Lenovo G50-80\\IdeaProjects\\CensusAnalyser\\src\\test\\resources\\IndiaStateCensusData.csv";
-    //method to load Indian State Census Information from csv file
+      //method to load Indian State Census Information from csv file
     public int loadIndiaCensusData(String csvFilePath) throws CensusAnalyserException {
         try {
             Reader reader = Files.newBufferedReader(Paths.get(csvFilePath));
