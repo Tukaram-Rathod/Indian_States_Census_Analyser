@@ -12,7 +12,7 @@ import java.util.Iterator;
 public class CensusAnalyser {
     private static final String INDIA_CENSUS_CSV_FILE_PATH = "C:\\Users\\Lenovo G50-80\\IdeaProjects\\CensusAnalyser\\src\\test\\resources\\IndiaStateCensusData.csv";
     //method to load Indian State Census Information from csv file
-    public void loadIndiaCensusData(String csvFilePath) throws CensusAnalyserException {
+    public int loadIndiaCensusData(String csvFilePath) throws CensusAnalyserException {
         try {
             Reader reader = Files.newBufferedReader(Paths.get(csvFilePath));
             CsvToBeanBuilder<IndiaCensusCSV> csvToBeanBuilder = new CsvToBeanBuilder<>(reader);
@@ -25,15 +25,11 @@ public class CensusAnalyser {
                 namOfEateries++;
                 IndiaCensusCSV censusData = censusCSVIterator.next();
             }
-            System.out.println(namOfEateries);
+           return namOfEateries;
         } catch (IOException e) {
             throw new CensusAnalyserException(e.getMessage(),
                     CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM);
         }
     }
-    public static void main(String[] args) throws CensusAnalyserException {
-        System.out.println("Welcome To Indian State Census Analyser Problem!");
-        CensusAnalyser censusAnalyser = new CensusAnalyser();
-        censusAnalyser.loadIndiaCensusData(INDIA_CENSUS_CSV_FILE_PATH);
-    }
+
 }
